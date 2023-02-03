@@ -4,5 +4,5 @@ import { defaultColors } from "../styles/themes/default";
 type DefaultColorsProject = typeof defaultColors;
 
 declare module "styled-components" {
-    export interface defaultColors extends DefaultColorsProject {}
+    export interface DefaultTheme extends DefaultColorsProject {}
 }

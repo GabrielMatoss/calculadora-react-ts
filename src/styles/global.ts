@@ -6,9 +6,11 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
     }
-    /*Falta criar as tipagens dos temas para funcionar*/
+
     body {
-        background-color: darkcyan;
-        color: #fff;
+        width: 100%;
+        height: 100%;
+        background-color: ${props => props.theme["background-body"]};
+        color: ${props => props.theme["color-general-operator"]};
     }
 `;
