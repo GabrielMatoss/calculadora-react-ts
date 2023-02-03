@@ -13,4 +13,10 @@ export const GlobalStyles = createGlobalStyle`
         background-color: ${props => props.theme["background-body"]};
         color: ${props => props.theme["color-general-operator"]};
     }
+
+    body, button {
+        font-family: 'Rubik', sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+    }
 `;
