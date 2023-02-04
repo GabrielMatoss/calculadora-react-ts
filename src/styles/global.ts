@@ -10,8 +10,8 @@ export const GlobalStyles = createGlobalStyle`
     body {
         width: 100%;
         height: 100%;
-        background-color: ${props => props.theme["background-body"]};
-        color: ${props => props.theme["color-general-operator"]};
+        background-color: ${(props) => props.theme["background-body"]};
+        color: ${(props) => props.theme["color-general-operator"]};
     }
 
     body, button {
