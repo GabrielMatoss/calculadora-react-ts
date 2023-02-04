@@ -12,9 +12,10 @@ export function Calculadora() {
   function handleClick(event: any) {
     let keyButton = event.target.name;
     //aparentemente eu vou ter que pegar os valores de formas diferentes para cada click
-    keyButton;
+    
     switch (keyButton) {
       case "+":
+       console.log(keyButton) 
         break;
       case "-":
         console.log("O menos funcionando:", keyButton);

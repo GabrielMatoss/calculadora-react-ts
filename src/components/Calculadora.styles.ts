@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CalculadoraContainer = styled.main`
   max-width: 22.25rem;
-  height: 35.37rem;
+  //height: 35.37rem;
 
   background-color: ${(props) => props.theme["background-calculator"]};
 
