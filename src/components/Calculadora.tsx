@@ -6,24 +6,42 @@ import {
   VisorCalculo,
 } from "./Calculadora.styles";
 
+
 export function Calculadora() {
   const [current, setCurrent] = useState("");
-
+  const [current2, setCurrent2] = useState("");
   function handleClick(event: any) {
     let keyButton = event.target.name;
     //aparentemente eu vou ter que pegar os valores de formas diferentes para cada click
     
-    switch (keyButton) {
-      case "+":
-       console.log(keyButton) 
-        break;
-      case "-":
-        console.log("O menos funcionando:", keyButton);
-        break;
-      default:
-        console.log(keyButton);
-        break;
+    /*
+      Podemos tentar capturar o clique e jogar no primeiro numero do calculo, 
+      depois capturamos os sinal, e depois o ultimo numero, 
+      para aí sim mostrar o resultado se clicarmos no botao de igual.
+     */
+
+      /*
+        podemos fazer uma verificação direto no keyButton se ele incluir esses operadores a gente quita ele
+      */
+    const notNumber: any = {
+      C: "C",
+      CE: "CE",  
     }
+
+    let verifySimple = () => {
+      for(let simbols in notNumber){
+       return(notNumber[simbols]) 
+      }
+      }
+
+   return setCurrent(():any => {
+    if(keyButton.includes(verifySimple())){
+      return "Deu Ruim";
+    }else {
+      return keyButton;
+    }
+    
+   });
   }
 
   return (
@@ -31,7 +49,11 @@ export function Calculadora() {
       <VisorCalculo>
         <div id="visorCalc">
           <div id="operations">
-            <div>1+1</div>
+            <div>
+              <span>{current}</span>
+              <span>+</span>
+              <span>{current2}</span>
+            </div>
             <div id="current_operation">2</div>
           </div>
           <div>=</div>
