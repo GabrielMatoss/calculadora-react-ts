@@ -25,7 +25,7 @@ export const CalculadoraContainer = styled.main`
 
 export const VisorCalculo = styled.div`
   width: 100%;
-
+  
   //background-color: cadetblue;
 
   #visorCalc {
