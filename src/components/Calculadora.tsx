@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import {
   CalculadoraContainer,
   TecladoDiv,
@@ -24,6 +24,11 @@ export function Calculadora() {
   function clearAll() {
     setCurrent(0);
     setPrevious(0);
+    setOperadorChoice("");
+  }
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
   }
 
   function porcentage() {
@@ -41,19 +46,24 @@ export function Calculadora() {
   function operatorHandler(event: any) {
     let operatorInput = event.target.value;
     setOperadorChoice(operatorInput);
-    setPrevious(current);
     setCurrent(0);
+    setPrevious(current);
   }
 
   function calculate() {
-    if (operatorChoice === "/") {
-      setCurrent(parseFloat(previous) / parseFloat(current));
-    } else if (operatorChoice === "*") {
-      setCurrent(parseFloat(previous) * parseFloat(current));
-    } else if (operatorChoice === "+") {
-      setCurrent(+previous + +current); // parseFloat ?
-    } else if (operatorChoice === "-") {
-      setCurrent(parseFloat(previous) - parseFloat(current));
+    switch (operatorChoice) {
+      case "/":
+        setCurrent(parseFloat(previous) / parseFloat(current));
+        break;
+      case "*":
+        setCurrent(parseFloat(previous) * parseFloat(current));
+        break;
+      case "+":
+        setCurrent(+current + +previous); // parseFloat ?
+        break;
+      case "-":
+        setCurrent(parseFloat(previous) - parseFloat(current));
+        break;
     }
   }
 
@@ -61,18 +71,26 @@ export function Calculadora() {
     <CalculadoraContainer>
       <VisorCalculo>
         <div id="visorCalc">
+
           <div id="operations">
-            <div>
-              <span>{previous}</span>
+
+            <div id="currentOperation">
+              {current}
               <span>{operatorChoice}</span>
-              <span>{current}</span>
             </div>
-            <div id="current_operation">{current}</div>
+
+            <div>
+              <div id="previousOperation">{previous}</div>
+            </div>
+
+            <div id="total">{previous}</div>
+            
           </div>
+
           <div>=</div>
         </div>
       </VisorCalculo>
-      <TecladoDiv>
+      <TecladoDiv onSubmit={handleSubmit}>
         <Teclas name="CE" onClick={clearAll}>
           CE
         </Teclas>

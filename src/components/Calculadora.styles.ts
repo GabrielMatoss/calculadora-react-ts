@@ -25,8 +25,9 @@ export const CalculadoraContainer = styled.main`
 
 export const VisorCalculo = styled.div`
   width: 100%;
-  
-  //background-color: cadetblue;
+  overflow-wrap: break-word;
+
+  background-color: red;
 
   #visorCalc {
     padding-inline: 1rem;
@@ -34,19 +35,32 @@ export const VisorCalculo = styled.div`
     flex-direction: row-reverse;
     align-items: flex-end;
     justify-content: space-between;
-
+    background-color: blue;
+   
     > div {
       color: ${(props) => props.theme["color-numbers-calculate"]};
       font-size: 1rem;
       line-height: 1rem;
     }
 
-    #operations {
+    > #operations {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      //background-color: blueviolet;
       justify-content: center;
       align-items: flex-end;
+      background-color: blueviolet;
+
+      #currentOperation{
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        overflow-wrap: break-word;
+      }
+
+      #previousOperation{
+        overflow-wrap: break-word;
+      }
 
       > div {
         font-size: 1.25rem;
@@ -54,7 +68,7 @@ export const VisorCalculo = styled.div`
         color: ${(props) => props.theme["color-numbers-calculate"]};
       }
 
-      > #current_operation {
+      > #total {
         font-size: 2.25rem;
         line-height: 3.15rem;
         color: ${(props) => props.theme["color-general-operator"]};
@@ -63,7 +77,8 @@ export const VisorCalculo = styled.div`
   }
 `;
 
-export const TecladoDiv = styled.div`
+
+export const TecladoDiv = styled.form`
   // background-color: red;
   width: 18.25rem;
 
