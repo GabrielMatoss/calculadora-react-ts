@@ -10,6 +10,7 @@ export function Calculadora() {
   const [current, setCurrent] = useState<any>(0);
   const [previous, setPrevious] = useState<any>(0);
   const [operatorChoice, setOperadorChoice] = useState("");
+  const [total, setTotal] = useState(0);
 
   function handleClick(event: any) {
     let keyButton = event.target.value;
@@ -32,7 +33,7 @@ export function Calculadora() {
   }
 
   function porcentage() {
-    setCurrent(current / 100);
+    setTotal(current / 100);
   }
 
   function operadorChange() {
@@ -45,24 +46,25 @@ export function Calculadora() {
 
   function operatorHandler(event: any) {
     let operatorInput = event.target.value;
-    setOperadorChoice(operatorInput);
-    setCurrent(0);
     setPrevious(current);
+    setCurrent(0);
+    setOperadorChoice(operatorInput);
+   
   }
 
   function calculate() {
     switch (operatorChoice) {
       case "/":
-        setCurrent(parseFloat(previous) / parseFloat(current));
+        setTotal(parseFloat(previous) / parseFloat(current));
         break;
       case "*":
-        setCurrent(parseFloat(previous) * parseFloat(current));
+        setTotal(parseFloat(previous) * parseFloat(current));
         break;
       case "+":
-        setCurrent(+current + +previous); // parseFloat ?
+        setTotal(+current + +previous); // parseFloat ?
         break;
       case "-":
-        setCurrent(parseFloat(previous) - parseFloat(current));
+        setTotal(parseFloat(previous) - parseFloat(current));
         break;
     }
   }
@@ -70,25 +72,20 @@ export function Calculadora() {
   return (
     <CalculadoraContainer>
       <VisorCalculo>
-        <div id="visorCalc">
 
           <div id="operations">
-
             <div id="currentOperation">
-              {current}
+            <span>{previous}</span>  
               <span>{operatorChoice}</span>
+              <span>{current}</span>
             </div>
-
-            <div>
-              <div id="previousOperation">{previous}</div>
-            </div>
-
-            <div id="total">{previous}</div>
-            
+              <div id="total">{total}
+              <span>=</span>
+              </div>
+                       
           </div>
 
-          <div>=</div>
-        </div>
+        
       </VisorCalculo>
       <TecladoDiv onSubmit={handleSubmit}>
         <Teclas name="CE" onClick={clearAll}>

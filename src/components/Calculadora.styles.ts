@@ -24,59 +24,58 @@ export const CalculadoraContainer = styled.main`
 `;
 
 export const VisorCalculo = styled.div`
+
   width: 100%;
+  padding-inline: 1rem;
+
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  justify-content: space-between;
   overflow-wrap: break-word;
 
-  background-color: red;
-
-  #visorCalc {
-    padding-inline: 1rem;
+  > #operations {
+    flex: 1;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
+    justify-content: center;
     align-items: flex-end;
-    justify-content: space-between;
-    background-color: blue;
-   
-    > div {
-      color: ${(props) => props.theme["color-numbers-calculate"]};
-      font-size: 1rem;
-      line-height: 1rem;
+
+    #currentOperation {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      overflow-wrap: break-word;
+      text-overflow: clip;
     }
 
-    > #operations {
-      flex: 1;
+    #previousOperation {
+      overflow-wrap: break-word;
+      min-height: 0.7rem;
+    }
+
+    > div {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      color: ${(props) => props.theme["color-numbers-calculate"]};
+    }
+
+    > #total {
+      width: 100%;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
-      background-color: blueviolet;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 2.25rem;
+      line-height: 3.15rem;
+      color: ${(props) => props.theme["color-general-operator"]};
 
-      #currentOperation{
-        display: flex;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        overflow-wrap: break-word;
-      }
-
-      #previousOperation{
-        overflow-wrap: break-word;
-      }
-
-      > div {
-        font-size: 1.25rem;
-        line-height: 1.75rem;
-        color: ${(props) => props.theme["color-numbers-calculate"]};
-      }
-
-      > #total {
-        font-size: 2.25rem;
-        line-height: 3.15rem;
-        color: ${(props) => props.theme["color-general-operator"]};
+      > span {
+        font-size: 1.5rem;
       }
     }
   }
 `;
-
 
 export const TecladoDiv = styled.form`
   // background-color: red;
