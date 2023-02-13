@@ -26,6 +26,7 @@ export function Calculadora() {
     setCurrent(0);
     setPrevious(0);
     setOperadorChoice("");
+    setTotal(0)
   }
 
   function handleSubmit(event: FormEvent) {
@@ -48,6 +49,7 @@ export function Calculadora() {
     let operatorInput = event.target.value;
     setPrevious(current);
     setCurrent(0);
+    setTotal(0);
     setOperadorChoice(operatorInput);
    
   }
@@ -61,7 +63,7 @@ export function Calculadora() {
         setTotal(parseFloat(previous) * parseFloat(current));
         break;
       case "+":
-        setTotal(+current + +previous); // parseFloat ?
+        setTotal(parseFloat(current) + parseFloat(previous)); 
         break;
       case "-":
         setTotal(parseFloat(previous) - parseFloat(current));
